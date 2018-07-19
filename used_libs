@@ -1,6 +1,5 @@
 libX11.so.6
 libXext.so.6
-libXfontcache.so.1
 libXmuu.so.1
 libXxf86misc.so.1
 libc.so.6
