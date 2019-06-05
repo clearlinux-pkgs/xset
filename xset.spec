@@ -4,7 +4,7 @@
 #
 Name     : xset
 Version  : 1.2.4
-Release  : 2
+Release  : 3
 URL      : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz
 Source0  : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz
 Summary  : No detailed summary available
