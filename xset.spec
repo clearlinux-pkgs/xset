@@ -6,10 +6,10 @@
 #
 Name     : xset
 Version  : 1.2.4
-Release  : 4
+Release  : 5
 URL      : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz
 Source0  : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz
-Source99 : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz.sig
+Source1  : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT-Opengroup
@@ -54,35 +54,37 @@ man components for the xset package.
 
 %prep
 %setup -q -n xset-1.2.4
+cd %{_builddir}/xset-1.2.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559832100
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604356867
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1559832100
+export SOURCE_DATE_EPOCH=1604356867
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xset
-cp COPYING %{buildroot}/usr/share/package-licenses/xset/COPYING
+cp %{_builddir}/xset-1.2.4/COPYING %{buildroot}/usr/share/package-licenses/xset/e329518edc3fad9042360d8b6d7b8fcd5097d012
 %make_install
 
 %files
@@ -94,7 +96,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/xset/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/xset/COPYING
+/usr/share/package-licenses/xset/e329518edc3fad9042360d8b6d7b8fcd5097d012
 
 %files man
 %defattr(0644,root,root,0755)
