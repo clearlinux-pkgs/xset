@@ -6,7 +6,7 @@
 #
 Name     : xset
 Version  : 1.2.4
-Release  : 5
+Release  : 6
 URL      : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz
 Source0  : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz
 Source1  : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz.sig
@@ -21,7 +21,6 @@ BuildRequires : pkgconfig(xext)
 BuildRequires : pkgconfig(xmuu)
 BuildRequires : pkgconfig(xorg-macros)
 BuildRequires : pkgconfig(xproto)
-BuildRequires : pkgconfig(xxf86misc)
 
 %description
 All questions regarding this software should be directed at the
@@ -61,7 +60,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604356867
+export SOURCE_DATE_EPOCH=1614192465
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -81,7 +80,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1604356867
+export SOURCE_DATE_EPOCH=1614192465
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xset
 cp %{_builddir}/xset-1.2.4/COPYING %{buildroot}/usr/share/package-licenses/xset/e329518edc3fad9042360d8b6d7b8fcd5097d012
