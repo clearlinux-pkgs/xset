@@ -1,2 +1,2 @@
-Configure miss: SET_XF86MISC
 Configure miss: SET_FONTCACHE
+Configure miss: gcc options needed to detect all undeclared functions

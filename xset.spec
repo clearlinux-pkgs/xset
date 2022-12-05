@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCFDF148828C642A7 (alanc@freedesktop.org)
 #
 Name     : xset
-Version  : 1.2.4
-Release  : 7
-URL      : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz
-Source0  : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz
-Source1  : https://www.x.org/releases/individual/app/xset-1.2.4.tar.gz.sig
+Version  : 1.2.5
+Release  : 8
+URL      : https://www.x.org/releases/individual/app/xset-1.2.5.tar.gz
+Source0  : https://www.x.org/releases/individual/app/xset-1.2.5.tar.gz
+Source1  : https://www.x.org/releases/individual/app/xset-1.2.5.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : MIT-Opengroup
@@ -23,6 +23,8 @@ BuildRequires : pkgconfig(xorg-macros)
 BuildRequires : pkgconfig(xproto)
 
 %description
+xset - user preference utility for X
+------------------------------------
 All questions regarding this software should be directed at the
 Xorg mailing list:
 
@@ -52,23 +54,23 @@ man components for the xset package.
 
 
 %prep
-%setup -q -n xset-1.2.4
-cd %{_builddir}/xset-1.2.4
+%setup -q -n xset-1.2.5
+cd %{_builddir}/xset-1.2.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1614194359
+export SOURCE_DATE_EPOCH=1670224009
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -80,10 +82,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1614194359
+export SOURCE_DATE_EPOCH=1670224009
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xset
-cp %{_builddir}/xset-1.2.4/COPYING %{buildroot}/usr/share/package-licenses/xset/e329518edc3fad9042360d8b6d7b8fcd5097d012
+cp %{_builddir}/xset-%{version}/COPYING %{buildroot}/usr/share/package-licenses/xset/e329518edc3fad9042360d8b6d7b8fcd5097d012
 %make_install
 
 %files
